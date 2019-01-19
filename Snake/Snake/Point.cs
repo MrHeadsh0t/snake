@@ -12,7 +12,7 @@ namespace Snake
         public int y;
         public char sym;
 
-        public Point(int _x,int _y, char _sym)
+        public Point(int _x, int _y, char _sym)
         {
             // Конструктор
             x = _x;
@@ -20,10 +20,30 @@ namespace Snake
             sym = _sym;
         }
 
+        public Point(Point p)
+        {
+            x = p.x;
+            y = p.y;
+            sym = p.sym;
+        }
+
+        public void Move(int offset, direction dir)
+        {
+            if (dir == direction.RIGTH) x += offset;
+            else if (dir == direction.LEFT) x -= offset;
+            else if (dir == direction.DOWN) y += offset;
+            else if (dir == direction.UP) y -= offset;
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
+        }
+
+        public override string ToString()
+        {
+            return x + ", " + y + ", " + sym;
         }
     }
 }
