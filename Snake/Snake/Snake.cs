@@ -41,5 +41,13 @@ namespace Snake
             nextPoint.Move(1, dir);
             return nextPoint;
         }
+
+        public void dirChange(ConsoleKey key)
+        {
+            if (key == ConsoleKey.UpArrow) dir = direction.UP;
+            else if (key== ConsoleKey.DownArrow) dir = direction.DOWN;
+            else if (key== ConsoleKey.RightArrow) dir = direction.RIGTH;
+            else if (key== ConsoleKey.LeftArrow) dir = direction.LEFT;
+        }
     }
 }
