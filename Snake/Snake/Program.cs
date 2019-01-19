@@ -22,9 +22,10 @@ namespace Snake
             VerticalLine border4 = new VerticalLine(0, 29, 0, '+');
             #endregion
 
-            Point start = new Point(4,5,'*');
-            Snake snake = new Snake(start,4,direction.RIGTH);
-            snake.Draw();
+            Point start = new Point(4,5,'*'); // Хвост
+            Snake snake = new Snake(start,4,direction.RIGTH); // Создаём змейку
+            snake.Draw(); // Рисуем её
+            snake.Move();
 
             Console.ReadLine();
 
