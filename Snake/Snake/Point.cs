@@ -27,6 +27,11 @@ namespace Snake
             sym = p.sym;
         }
 
+        public bool IsHit(Point pointhead)
+        {
+            return pointhead.x == x && pointhead.y == y;
+        }
+
         public void Move(int offset, direction dir)
         {
             if (dir == direction.RIGTH) x += offset;
@@ -51,5 +56,6 @@ namespace Snake
         {
             return x + ", " + y + ", " + sym;
         }
+
     }
 }

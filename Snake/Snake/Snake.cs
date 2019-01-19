@@ -11,11 +11,11 @@ namespace Snake
 
         direction dir;
         // 0 -Up; 1 - Rigth; 2 - Down; 3-Left;
-        public Snake(Point tail,int length,direction direction)
+        public Snake(Point tail, int length, direction direction)
         {
             dir = direction;
             pList = new List<Point>();
-            for(int i = 0; i < length; i++)
+            for (int i = 0; i < length; i++)
             {
                 Point p = new Point(tail);
                 p.Move(i, dir);
@@ -45,9 +45,23 @@ namespace Snake
         public void dirChange(ConsoleKey key)
         {
             if (key == ConsoleKey.UpArrow) dir = direction.UP;
-            else if (key== ConsoleKey.DownArrow) dir = direction.DOWN;
-            else if (key== ConsoleKey.RightArrow) dir = direction.RIGTH;
-            else if (key== ConsoleKey.LeftArrow) dir = direction.LEFT;
+            else if (key == ConsoleKey.DownArrow) dir = direction.DOWN;
+            else if (key == ConsoleKey.RightArrow) dir = direction.RIGTH;
+            else if (key == ConsoleKey.LeftArrow) dir = direction.LEFT;
+        }
+
+        public bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.sym = head.sym;
+                pList.Add(food);
+                return true;
+            }
+            else return false;
+
+           
         }
     }
 }

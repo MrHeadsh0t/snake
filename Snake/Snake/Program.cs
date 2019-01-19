@@ -23,12 +23,29 @@ namespace Snake
             VerticalLine border4 = new VerticalLine(0, 29, 0, '+');
             #endregion
 
+            #region Points
+            //Змейка
             Point start = new Point(4,5,'*'); // Хвост
             Snake snake = new Snake(start,4,direction.RIGTH); // Создаём змейку
             snake.Draw(); // Рисуем её
             snake.Move();
+
+            //Еда
+            FoodCreator foodCreator = new FoodCreator(120, 30, '$');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+            #endregion
+
+
+
+
             while (true)
             {
+                if (snake.Eat(food))
+                {
+                    food = foodCreator.CreateFood();
+                    food.Draw();
+                }
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
