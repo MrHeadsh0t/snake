@@ -12,18 +12,12 @@ namespace Snake
         {
             //TODO Optimize!
 
-            Point p1 = new Point(1,3,'*');
-            p1.Draw();
-
-            Point p2 = new Point(4,5,'#');
-            p2.Draw();
-
-            HorizontalLine line = new HorizontalLine(1, 10, 5, '^');
-            line.Draw();
-
-            VerticalLine line2 = new VerticalLine(5, 10, 5, '&');
-            line2.Draw();
-            
+            Console.SetBufferSize(120, 30);
+            HorizontalLine border1 = new HorizontalLine(0, 119, 0, '+');
+            VerticalLine border2 = new VerticalLine(0, 29, 119, '+');
+            HorizontalLine border3 = new HorizontalLine(0, 119, 29, '+');
+            VerticalLine border4 = new VerticalLine(0, 29, 0, '+');
+                       
             Console.ReadLine();
 
         }
