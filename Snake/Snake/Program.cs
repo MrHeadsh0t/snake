@@ -11,17 +11,8 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            //TODO Optimize!
 
-
-            #region Borders
-            // Boreders
-            Console.SetBufferSize(120, 30);
-            HorizontalLine border1 = new HorizontalLine(0, 119, 0, '+');
-            VerticalLine border2 = new VerticalLine(0, 29, 119, '+');
-            HorizontalLine border3 = new HorizontalLine(0, 119, 29, '+');
-            VerticalLine border4 = new VerticalLine(0, 29, 0, '+');
-            #endregion
+            Wall wall = new Wall(120, 15);
 
             #region Points
             //Змейка
@@ -36,17 +27,18 @@ namespace Snake
             food.Draw();
             #endregion
 
-
-
-
             while (true)
             {
+                if (wall.IsHit(snake) || snake.IsHitTail())
+                {
+                    break;
+                }
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
                     food.Draw();
                 }
-                if (Console.KeyAvailable)
+                else if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.dirChange(key.Key);
@@ -54,6 +46,7 @@ namespace Snake
                 Thread.Sleep(100);
                 snake.Move();
             }
+
         }
     }
 }
